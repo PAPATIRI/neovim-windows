@@ -1,3 +1,7 @@
+-- Move highlighted lines up/down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- exit from insert mode
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "jk", "<Esc>")
 -- keymap pindah pindah window
@@ -22,6 +26,11 @@ vim.keymap.set("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true,
 vim.keymap.set("n", "<leader>n", "<cmd> set nu! <CR>")
 -- toggle relativelinenumber
 vim.keymap.set("n", "<leader>rn", "<cmd> set rnu! <CR>")
+
+-- buffer management
+vim.keymap.set("n", "<leader>bd", ":bdelete<CR>")
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
+vim.keymap.set("n", "<leader>bp", ":bprev<CR>")
 
 -- matiin shift Q
 vim.keymap.set("n", "Q", "<nop>")

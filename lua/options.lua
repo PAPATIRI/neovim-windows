@@ -25,6 +25,7 @@ local options = {
 	smartcase = true, -- ignore uppercase unless the search term has an uppercase
 	hlsearch = false, -- highlight the result of the search term
 	breakindent = true, -- preserve the indentation of a virtual line
+	cursorline = true,
 	clipboard = "unnamedplus", -- use the clipboard register for all operations except yank
 	autoindent = true, -- copy indent from current line when starting a new line
 	encoding = "utf-8", -- set the char encoding used inside neovim
