@@ -1,35 +1,50 @@
 -- set leader key --
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
--- set clipboard options
-vim.opt.clipboard = "unnamedplus"
--- set tab size
-vim.opt.tabstop = 4
-vim.o.expandtab = true
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
--- set powershell as default shell
-vim.o.shell = "powershell.exe"
 
+-- setting for chad nvimterm
+vim.o.shell = "powershell.exe"
 vim.o.shellxquote = ""
 vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command "
 vim.o.shellquote = ""
 vim.o.shellpipe = "| Out-File -Encoding UTF8 %s"
 vim.o.shellredir = "| Out-File -Encoding UTF8 %s"
 
--- set relative line number
-vim.o.relativenumber = true
--- set line break
-vim.opt.breakindent = true
-vim.opt.formatoptions:remove "t"
-vim.opt.linebreak = true
--- set incremental search
-vim.opt.incsearch = true
--- set terminal color
-vim.opt.termguicolors = true
--- set scrolloff
-vim.opt.scrolloff = 10
--- set misc
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append "@-@"
-vim.opt.updatetime = 50
+local options = {
+	termguicolors = true,
+	number = true,
+	relativenumber = true,
+	shiftwidth = 4,
+	tabstop = 4,
+	softtabstop = 4,
+	expandtab = true, --use space to make tabs
+	swapfile = false, -- no swap file
+	backup = false, -- no backup file
+	mouse = "a", -- allow mouse
+	ignorecase = true, -- ignore sensitive case for searching
+	smartcase = true, -- ignore uppercase unless the search term has an uppercase
+	hlsearch = false, -- highlight the result of the search term
+	breakindent = true, -- preserve the indentation of a virtual line
+	clipboard = "unnamedplus", -- use the clipboard register for all operations except yank
+	autoindent = true, -- copy indent from current line when starting a new line
+	encoding = "utf-8", -- set the char encoding used inside neovim
+	fileencoding = "utf-8", -- set the char encoding for the file of the buffer
+	title = true, -- show the title on window with the value of titlestring
+	wildmenu = true, -- command line completion operates in an enhanced mode
+	showcmd = true, -- show partial command in the last line of the screen
+	cmdheight = 1, -- more space in the neovim command line for displaying message
+	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
+	conceallevel = 0, -- so '' show in markdown file
+	pumheight = 10, -- pop up menu height
+	showmode = false, -- hide status like --INSERT--
+	undofile = true, -- enable persistent undo
+	signcolumn = "yes", -- always show the sign column , otherwise it would shift the text each time
+	scrolloff = 4,
+	updatetime = 50,
+}
+
+vim.opt.shortmess:append("c")
+
+for key, value in pairs(options) do
+	vim.opt[key] = value
+end
