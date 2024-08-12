@@ -15,6 +15,7 @@ return {
 					"html",
 					"emmet_ls",
 					"vtsls",
+					"tailwindcss",
 					"volar",
 				},
 			})
@@ -40,6 +41,7 @@ return {
 					"sass",
 					"scss",
 					"svelte",
+					"typescript",
 					"typescriptreact",
 					"vue",
 				},
@@ -52,6 +54,7 @@ return {
 					},
 				},
 			})
+			--html css
 			lspconfig.html.setup({
 				capabilities = lsp_capabilities,
 				on_attach = function(client)
@@ -59,6 +62,13 @@ return {
 				end,
 			})
 			lspconfig.cssls.setup({
+				capabilities = lsp_capabilities,
+				on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = true
+				end,
+			})
+			--tailwindcss
+			lspconfig.tailwindcss.setup({
 				capabilities = lsp_capabilities,
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = true
@@ -85,12 +95,13 @@ return {
 					client.server_capabilities.documentFormattingProvider = true
 				end,
 			})
-			--lsp vue
+			-- lsp vue
 			lspconfig.volar.setup({
 				capabilities = lsp_capabilities,
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = true
 				end,
+				root_dir = lspconfig.util.root_pattern("package.json", "vue.config.js", ".git"),
 			})
 
 			-- keymap

@@ -14,8 +14,6 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		lazy = true,
-		event = "InsertEnter",
 		config = function()
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -84,18 +82,6 @@ return {
 					{ name = "nvim_lua" },
 				}),
 			})
-
-			-- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
-			-- Set configuration for specific filetype.
-			--[[ cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'git' },
-    }, {
-      { name = 'buffer' },
-    })
- })
- require("cmp_git").setup() ]]
-			--
 		end,
 	},
 	{
