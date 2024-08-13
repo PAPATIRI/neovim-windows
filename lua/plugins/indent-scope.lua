@@ -1,6 +1,7 @@
 return {
 	"echasnovski/mini.indentscope",
 	version = false, -- wait till new 0.7.0 release to put it back on semver
+	event = "VeryLazy",
 	opts = {
 		-- symbol = "▏",
 		symbol = "│",
@@ -9,8 +10,6 @@ return {
 	init = function()
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = {
-				"alpha",
-				"Alpha",
 				"NvimTree",
 				"dashboard",
 				"fzf",

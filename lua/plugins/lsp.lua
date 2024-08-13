@@ -16,13 +16,13 @@ return {
 					"emmet_ls",
 					"vtsls",
 					"tailwindcss",
-					"volar",
 				},
 			})
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
+		event = "VeryLazy",
 		config = function()
 			local lspconfig = require("lspconfig")
 
@@ -43,7 +43,6 @@ return {
 					"svelte",
 					"typescript",
 					"typescriptreact",
-					"vue",
 				},
 				init_options = {
 					html = {
@@ -94,14 +93,6 @@ return {
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = true
 				end,
-			})
-			-- lsp vue
-			lspconfig.volar.setup({
-				capabilities = lsp_capabilities,
-				on_attach = function(client)
-					client.server_capabilities.documentFormattingProvider = true
-				end,
-				root_dir = lspconfig.util.root_pattern("package.json", "vue.config.js", ".git"),
 			})
 
 			-- keymap
